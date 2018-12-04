@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Rock,Paper,Scissors</title>
+</head>
+<body>
+	<script>
+		
+		function computerPlay(){
+			var picks = ['Rock', 'Paper', 'Scissors'];
+			let computerPick = Math.floor(Math.random()*(picks.length));
+			return picks[computerPick];
+			}
+		
+
+		function oneRound(playerSelection, computerSelection){
+				let playerChoice = playerSelection;
+				let computerChoice = computerSelection;
+				if (computerChoice === 'ROCK')
+					{
+						if(playerChoice === 'ROCK')
+							{
+								return 'It\`s a tie.';
+							} 
+							else if(playerChoice === 'SCISSORS')
+								{
+									return 'You lose! Rock beats scissors!';
+								}
+								else if(playerChoice === 'PAPER')
+									{
+										return 'You win! Paper beats rock!';
+									}
+									else{
+										return 'Invalid choice!';
+									}
+					}
+				else if(computerChoice === 'SCISSORS')
+					{
+						if(playerChoice === 'SCISSORS')
+							{
+								return 'It\`s a tie.';
+							} 
+							else if(playerChoice === 'ROCK')
+								{
+									return 'You win! Rock beats scissors!';
+								}
+								else if(playerChoice === 'PAPER')
+									{
+									return 'You lose! Scissors beat paper!';
+									}
+									else{
+										return 'Invalid choice!';
+									}
+					}
+				else if(computerChoice === 'PAPER')
+					{
+						if(playerChoice === 'PAPER')
+							{
+								return 'It\`s a tie.';
+							} 
+							else if(playerChoice === 'ROCK')
+								{
+								return 'You lose! Paper beats rock!';
+								}
+								else if(playerChoice === 'SCISSORS')
+									{
+									return 'You win! Scissors beat paper!';
+									}
+									else{
+										return 'Invalid choice!';
+									}
+					}
+				}
+
+				function game(){
+					let winCount = 0;
+					let loseCount = 0;
+					for (let i=0; i<5; i++)	
+						{
+						let playerPick = prompt("Please enter your choice: ").toUpperCase();
+						let computerPick = computerPlay().toUpperCase();
+						oneRound(playerPick, computerPick);
+						if(oneRound(playerPick, computerPick).charAt(4) === 'w'){
+								winCount++;
+								}
+								else if(oneRound(playerPick, computerPick).charAt(4) === 'l'){
+									loseCount++;
+									}
+									else{
+										winCount++;
+										loseCount++;
+									}
+							console.log("Your pick is: " + playerPick +"." + " " + "Computer picked: " + computerPick + ".");
+							console.log(oneRound(playerPick, computerPick));
+						}
+					if (loseCount > winCount){
+						
+							return 'You lose ' + loseCount +' to '+ winCount + '!';
+						}
+						else if (winCount > loseCount)
+							{
+								return 'You win ' + winCount +' to '+ loseCount + '!';
+							}
+							else{
+								return 'It\'s a tie!';
+							}
+					}
+		
+		let result = game();
+		console.log(result);
+
+	</script>
+</body>
+</html>
